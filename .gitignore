@@ -1,0 +1,35 @@
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln.ide
+*.swp
+*~
+*.tmp
+*.bak
+
+# Build / distribution
+build/
+dist/
+*.zip
+*.tar.gz
+*.tar
+*.7z
+
+# World of Warcraft runtime files
+SavedVariables/
+*_Cache.lua
+*_Variables.lua
+*.lua.backup
+
+# Nested repository metadata
+**/.git
+
+# Optional local config
+*.local
+.env
