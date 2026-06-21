@@ -1,0 +1,7 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+    <!-- El template de pin que se usará para dibujar en el mapa del mundo -->
+    <Frame name="WhereIGatheredPinTemplate" inherits="MapCanvasPinTemplate" mixin="WhereIGatheredPinMixin" virtual="true">
+        <Size x="16" y="16"/>
+    </Frame>
+</Ui>

@@ -1,0 +1,14 @@
+## Interface: 120000
+## Title: WhereIGathered
+## Notes: Registra posiciones de recolección y las muestra en el mapa y minimapa.
+## Author: fytta
+## SavedVariables: WhereIGatheredDB
+## IconTexture: Interface\Icons\INV_Misc_Compass_01
+
+
+libs\LibStub\LibStub.lua
+libs\CallbackHandler\CallbackHandler-1.0.lua
+libs\HereBeDragons\HereBeDragons-2.0.lua
+libs\HereBeDragons\HereBeDragons-Pins-2.0.lua
+
+WhereIGathered.lua
