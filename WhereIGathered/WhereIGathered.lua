@@ -151,6 +151,12 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
     elseif event == "UNIT_SPELLCAST_SUCCEEDED" then
         local unitTarget, castGUID, spellID = ...
         if unitTarget == "player" then
+            -- Excluir herbología de cadáveres de Midnight (spell ID 32605)
+            -- Estos no son nodos de recolección típicos y no deberían registrarse en la BD
+            if spellID == 32605 then
+                return
+            end
+            
             local spellName = GetSpellName(spellID)
             local nodeType = nil
             
@@ -178,13 +184,29 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                         local x, y = position:GetXY()
                         if x and y then
                             WhereIGatheredDB[uiMapID] = WhereIGatheredDB[uiMapID] or {}
-                            table.insert(WhereIGatheredDB[uiMapID], {
-                                x = x,
-                                y = y,
-                                type = nodeType
-                            })
-                            print("|cff00ff00WhereIGathered:|r " .. (nodeType == "mine" and "Veta" or "Planta") .. " guardada en tu base de datos.")
-                            UpdatePins()
+                            
+                            -- Verificar si ya existe un nodo cercano (dentro de 0.01 de distancia)
+                            local nodeExists = false
+                            local DUPLICATE_THRESHOLD = 0.01
+                            for _, existingNode in ipairs(WhereIGatheredDB[uiMapID]) do
+                                local distance = math.sqrt((x - existingNode.x)^2 + (y - existingNode.y)^2)
+                                if distance < DUPLICATE_THRESHOLD then
+                                    nodeExists = true
+                                    break
+                                end
+                            end
+                            
+                            if not nodeExists then
+                                table.insert(WhereIGatheredDB[uiMapID], {
+                                    x = x,
+                                    y = y,
+                                    type = nodeType
+                                })
+                                print("|cff00ff00WhereIGathered:|r " .. (nodeType == "mine" and "Veta" or "Planta") .. " guardada en tu base de datos.")
+                                UpdatePins()
+                            else
+                                print("|cffff9900WhereIGathered:|r Este nodo ya está registrado.")
+                            end
                         end
                     end
                 end
@@ -194,18 +216,101 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
 end)
 
 -- ==========================================
--- Comando de Chat (/wig)
+-- Comandos de Chat (/wig)
+-- ==========================================
+
+-- ==========================================
+-- Limpieza de Duplicados
+-- ==========================================
+
+local function RemoveDuplicates()
+    if not WhereIGatheredDB then return end
+    
+    local totalDuplicates = 0
+    local DUPLICATE_THRESHOLD = 0.01
+    
+    for mapID, nodes in pairs(WhereIGatheredDB) do
+        if mapID ~= "showPins" and type(nodes) == "table" then
+            local cleanedNodes = {}
+            
+            for _, node in ipairs(nodes) do
+                local isDuplicate = false
+                -- Verificar si este nodo es duplicado de uno ya procesado
+                for _, cleanNode in ipairs(cleanedNodes) do
+                    local distance = math.sqrt((node.x - cleanNode.x)^2 + (node.y - cleanNode.y)^2)
+                    if distance < DUPLICATE_THRESHOLD then
+                        isDuplicate = true
+                        totalDuplicates = totalDuplicates + 1
+                        break
+                    end
+                end
+                -- Si no es duplicado, lo añadimos
+                if not isDuplicate then
+                    table.insert(cleanedNodes, node)
+                end
+            end
+            
+            WhereIGatheredDB[mapID] = cleanedNodes
+        end
+    end
+    
+    return totalDuplicates
+end
+
+-- ==========================================
+-- Comandos de Chat (/wig)
 -- ==========================================
 
 SLASH_WHEREIGATHERED1 = "/wig"
 SLASH_WHEREIGATHERED2 = "/whereigathered"
 SlashCmdList["WHEREIGATHERED"] = function(msg)
     if not WhereIGatheredDB then return end
-    WhereIGatheredDB.showPins = not WhereIGatheredDB.showPins
-    if WhereIGatheredDB.showPins then
-        print("|cff00ccffWhereIGathered:|r Iconos MOSTRADOS.")
+    
+    local command = msg:lower():trim()
+    
+    if command == "reset" then
+        -- Resetear solo el mapa actual
+        local currentMapID = C_Map.GetBestMapForUnit("player")
+        if currentMapID and WhereIGatheredDB[currentMapID] then
+            WhereIGatheredDB[currentMapID] = {}
+            print("|cff00ccffWhereIGathered:|r Registros del mapa actual eliminados.")
+            UpdatePins()
+        else
+            print("|cff00ccffWhereIGathered:|r No hay registros en este mapa.")
+        end
+    elseif command == "reset all" then
+        -- Resetear todos los registros (excepto showPins)
+        for key in pairs(WhereIGatheredDB) do
+            if key ~= "showPins" then
+                WhereIGatheredDB[key] = nil
+            end
+        end
+        print("|cff00ccffWhereIGathered:|r Todos los registros han sido eliminados.")
+        UpdatePins()
+    elseif command == "cleanup" then
+        -- Limpiar duplicados
+        local duplicatesRemoved = RemoveDuplicates()
+        print("|cff00ccffWhereIGathered:|r Limpieza completada. Se eliminaron |cffff9900" .. duplicatesRemoved .. "|r duplicados.")
+        UpdatePins()
+    elseif command == "stats" then
+        -- Mostrar estadísticas
+        local totalNodes = 0
+        local mapCount = 0
+        for mapID, nodes in pairs(WhereIGatheredDB) do
+            if mapID ~= "showPins" and type(nodes) == "table" then
+                mapCount = mapCount + 1
+                totalNodes = totalNodes + #nodes
+            end
+        end
+        print("|cff00ccffWhereIGathered:|r Estadísticas: |cff00ff00" .. totalNodes .. "|r nodos en |cff00ff00" .. mapCount .. "|r mapas.")
     else
-        print("|cff00ccffWhereIGathered:|r Iconos OCULTOS.")
+        -- Toggle de visibilidad (comportamiento por defecto)
+        WhereIGatheredDB.showPins = not WhereIGatheredDB.showPins
+        if WhereIGatheredDB.showPins then
+            print("|cff00ccffWhereIGathered:|r Iconos MOSTRADOS.")
+        else
+            print("|cff00ccffWhereIGathered:|r Iconos OCULTOS.")
+        end
+        UpdatePins()
     end
-    UpdatePins()
 end

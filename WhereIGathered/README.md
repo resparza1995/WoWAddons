@@ -9,7 +9,12 @@
 - **Integración Nativa:** Utiliza `HereBeDragons` para asegurar que los iconos del minimapa sigan tus movimientos de manera precisa y rotan con el mapa.
 
 ## Comandos
-- `/wig` o `/whereigathered`: Muestra u oculta todos los iconos de recolección de los mapas instantáneamente.
+- `/wig` o `/whereigathered`: Alterna la visibilidad de todos los iconos de recolección en los mapas.
+- `/wig reset`: Elimina los registros de recolección **solo del mapa actual**.
+- `/wig reset all`: Elimina **todos los registros** de recolección de todos los mapas.
+
+## Características Especiales
+- **Filtrado de Nodos Dinámicos:** Excluye automáticamente la herbología de cadáveres de Midnight (que no son nodos de recolección típicos), evitando que se registren en la base de datos.
 
 ## Instalación
 1. Descarga el repositorio.
