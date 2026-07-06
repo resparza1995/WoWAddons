@@ -2,7 +2,7 @@
 
 **WhereIGathered** is a lightweight, modern World of Warcraft addon (fully ready for Midnight/TWW) that automatically records and displays mining veins and herbalism nodes you gather with your character on both the minimap and the world map, building a personal, local database.
 
-Además, cuenta con un sistema de navegación inteligente que te guía por la ruta óptima de recolección en tu zona actual.
+Additionally, it features an intelligent navigation system that guides you through the optimal gathering route in your current zone.
 
 
 ## Key Features
@@ -15,13 +15,13 @@ Además, cuenta con un sistema de navegación inteligente que te guía por la ru
 *   **Premium HUD Compass:** A floating, dynamic arrow that rotates based on the direction your character is facing and shows the exact distance to the next node.
 *   **Smart Map Highlights:** The target pin of the active route is drawn twice as large with a bright, glowing golden border on both the Minimap and the World Map.
 
-## Interacción con la Brújula HUD
+## HUD Compass Interaction
 
 *   **Move the HUD:** Hold **Left-Click** on the compass and drag it anywhere on your screen. Its position will be saved automatically for future sessions.
 *   **Skip Node:** **Right-Click** on the compass to skip the current node and immediately point to the next one.
 *   **Auto-Advance:** When you get within **30 yards** of your current target node, the compass will automatically advance to the next node in the route.
 
-## Comandos de Chat
+## Chat Commands
 
 Use `/wig` or `/whereigathered` in chat followed by an option:
 
@@ -35,7 +35,7 @@ Use `/wig` or `/whereigathered` in chat followed by an option:
 *   `/wig reset all`: Deletes the **entire database** of the addon.
 *   `/wig help`: Displays an interactive guide with the list of available commands in chat.
 
-## Instalación
+## Installation
 
 1.  Download or clone the repository.
 2.  Copy the folder into your World of Warcraft addons directory:
@@ -43,17 +43,17 @@ Use `/wig` or `/whereigathered` in chat followed by an option:
 3.  Ensure the destination folder is named exactly `WhereIGathered`.
 4.  *Note*: If you are adding the addon for the first time or after this modular update, it is recommended to completely restart the game (or log out to the character selection screen) so that the WoW client registers the new files listed in the `.toc` file.
 
-## Estructura Modular y Código
+## Modular Structure and Code
 
-El addon ha sido estructurado siguiendo los mejores estándares de desarrollo de WoW, dividido en los siguientes módulos cargados secuencialmente:
-*   `Init.lua`: Inicialización de espacios de nombres.
-*   `Utils.lua`: Wrappers seguros y compatibles para funciones de la API de WoW.
-*   `Core.lua`: Inicialización del addon, persistencia de datos y escucha de eventos principales.
-*   `Recorder.lua`: Registro y validación de recolección.
-*   `Routing.lua`: Heurísticas del algoritmo de vecino más cercano y estado de rutas.
-*   `Compass.lua`: Creación, animaciones y comportamiento del HUD de la brújula.
-*   `MapPins.lua`: Renderizado y resaltado de pines a través de la librería `HereBeDragons-Pins-2.0`.
-*   `SlashCommands.lua`: Procesamiento de comandos de consola.
+The addon has been structured following the best WoW development practices, split into the following sequentially loaded modules:
+*   `Init.lua`: Namespace initialization.
+*   `Utils.lua`: Safe and compatible wrappers for WoW API functions.
+*   `Core.lua`: Addon initialization, data persistence, and main event listening.
+*   `Recorder.lua`: Recording and validation of gathering events.
+*   `Routing.lua`: Heuristics of the Nearest Neighbor algorithm and route state.
+*   `Compass.lua`: Creation, animations, and behavior of the HUD compass.
+*   `MapPins.lua`: Pin rendering and highlighting via the `HereBeDragons-Pins-2.0` library.
+*   `SlashCommands.lua`: Processing of console commands.
 
 ## Screenshots
 ### Wig commands
@@ -64,5 +64,3 @@ El addon ha sido estructurado siguiendo los mejores estándares de desarrollo de
 
 ### Wig nodes
 <img width="390" height="315" alt="wig-nodes" src="https://github.com/user-attachments/assets/13f58dda-c1fd-439a-b8ba-b361250f3793" />
-
-

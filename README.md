@@ -1,4 +1,4 @@
-# My World of Warcraft Addons
+# World of Warcraft Addons
 
 This directory contains the collection of custom addons developed for **World of Warcraft (WoW) Midnight (12.0+)**.
 
@@ -7,7 +7,6 @@ This directory contains the collection of custom addons developed for **World of
 ### 📌 [WhereIGathered](file:///e:/code-workspaces/WoWAddons/WhereIGathered)
 A lightweight, highly optimized addon that automatically records the exact position of your character every time you mine a vein or gather a herb, displaying a permanent icon (ore or plant) on both the minimap and the world map.
 
-*   **Author:** fytta
 *   **Compatibility:** WoW Midnight (Interface version: `120000`)
 *   **Key Features:**
     *   **Automatic Recording:** Captures the gathering event and stores 2D coordinates.
