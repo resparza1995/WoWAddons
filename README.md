@@ -1,37 +1,38 @@
-# Mis Addons de World of Warcraft
+# My World of Warcraft Addons
 
-Este directorio contiene la colección de addons personalizados desarrollados para **World of Warcraft (WoW) Midnight (12.0+)**.
+This directory contains the collection of custom addons developed for **World of Warcraft (WoW) Midnight (12.0+)**.
 
-## Proyectos Activos
+## Active Projects
 
 ### 📌 [WhereIGathered](file:///e:/code-workspaces/WoWAddons/WhereIGathered)
-Un addon ligero y altamente optimizado que registra automáticamente la posición exacta del personaje cada vez que minas una mena o recoges una planta, mostrando un icono fijo (veta o planta) en el minimapa y en el mapa del mundo.
+A lightweight, highly optimized addon that automatically records the exact position of your character every time you mine a vein or gather a herb, displaying a permanent icon (ore or plant) on both the minimap and the world map.
 
-*   **Autor:** fytta
-*   **Compatibilidad:** WoW Midnight (Versión de interfaz: `120000`)
-*   **Características Principales:**
-    *   **Registro Automático:** Captura el evento de recolección y guarda las coordenadas 2D.
-    *   **Optimización Activa:** Solo carga e inicializa los pines correspondientes a la zona actual del jugador (para el minimapa) y la zona que estás visualizando (para el mapa del mundo).
-    *   **Gestión Eficiente:** Utiliza la librería comunitaria `HereBeDragons` y un sistema de reciclaje de frames (*Frame Pooling*) para asegurar que el uso de CPU y memoria sea mínimo y evitar micro-tirones.
-    *   **Control por Chat:** Comando `/wig` o `/whereigathered` para activar/desactivar visualmente todos los iconos.
+*   **Author:** fytta
+*   **Compatibility:** WoW Midnight (Interface version: `120000`)
+*   **Key Features:**
+    *   **Automatic Recording:** Captures the gathering event and stores 2D coordinates.
+    *   **Active Optimization:** Only loads and initializes pins corresponding to the player's current zone (for the minimap) and the currently viewed zone (for the world map).
+    *   **Efficient Performance:** Uses the community library `HereBeDragons` and a frame recycling system (*Frame Pooling*) to keep CPU and memory usage minimal and prevent micro-stuttering.
+    *   **HUD Navigation & Route Optimization:** Includes a floating, draggable HUD compass and calculates optimal gathering routes using the **Nearest Neighbor** algorithm.
+    *   **Chat Control:** `/wig` or `/whereigathered` commands to toggle visibility, manage routes, clean up duplicates, and view statistics.
 
 ---
 
-## Cómo Probar y Desplegar los Addons
+## How to Test and Deploy Addons
 
-Para probar los cambios en el juego, los addons deben copiarse en la carpeta de instalación de World of Warcraft.
+To test changes in-game, addons must be copied to the World of Warcraft installation folder.
 
-### Rutas de Instalación
-*   **Directorio del Juego:** `D:\Battle.net\World of Warcraft`
-*   **Carpeta de Addons (Retail):** `D:\Battle.net\World of Warcraft\_retail_\Interface\AddOns`
+### Installation Paths
+*   **Game Directory:** `D:\Battle.net\World of Warcraft`
+*   **Addons Folder (Retail):** `D:\Battle.net\World of Warcraft\_retail_\Interface\AddOns`
 
-### Script de Despliegue Rápido (PowerShell)
-Puedes utilizar este comando rápido en PowerShell para copiar un addon directamente a tu carpeta de WoW tras realizar cambios:
+### Quick Deployment Script (PowerShell)
+You can use this quick PowerShell command to copy an addon directly to your WoW folder after making changes:
 
 ```powershell
-# Ejemplo para WhereIGathered
+# Example for WhereIGathered
 New-Item -ItemType Directory -Force -Path "D:\Battle.net\World of Warcraft\_retail_\Interface\AddOns\WhereIGathered"
 Copy-Item -Path "E:\code-workspaces\WoWAddons\WhereIGathered\*" -Destination "D:\Battle.net\World of Warcraft\_retail_\Interface\AddOns\WhereIGathered" -Recurse -Force
 ```
 
-Una vez copiado, si el juego está abierto, escribe `/reload` en el chat del juego para aplicar las modificaciones de archivos `.lua`. Si has agregado archivos nuevos (ej. imágenes o archivos `.toc`), reinicia el juego o vuelve a la pantalla de selección de personajes.
+Once copied, if the game is already running, type `/reload` in the game chat to apply any `.lua` file modifications. If you have added new files (e.g., textures or new `.toc` entries), restart the game or return to the character selection screen.
