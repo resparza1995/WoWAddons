@@ -11,4 +11,11 @@ libs\CallbackHandler\CallbackHandler-1.0.lua
 libs\HereBeDragons\HereBeDragons-2.0.lua
 libs\HereBeDragons\HereBeDragons-Pins-2.0.lua
 
-WhereIGathered.lua
+Init.lua
+Utils.lua
+Core.lua
+Recorder.lua
+Routing.lua
+Compass.lua
+MapPins.lua
+SlashCommands.lua
