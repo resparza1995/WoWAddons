@@ -1,65 +1,65 @@
 # WhereIGathered
 
-**WhereIGathered** es un addon ligero y moderno para World of Warcraft (preparado para Midnight/TWW) que registra y dibuja automáticamente en el minimapa y en el mapa del mundo los nodos de minería y herboristería que recolectas con tu personaje, creando una base de datos local y personal.
+**WhereIGathered** is a lightweight, modern World of Warcraft addon (fully ready for Midnight/TWW) that automatically records and displays mining veins and herbalism nodes you gather with your character on both the minimap and the world map, building a personal, local database.
 
-Además, cuenta con un potente sistema de navegación inteligente que te guía por la ruta óptima de recolección en tu zona actual.
-
----
-
-## Características Principales
-
-*   **Captura Automática:** Escucha tus hechizos de recolección en tiempo real y guarda la posición exacta.
-*   **Base de Datos Local:** Los datos se guardan en tus `SavedVariables` personales, garantizando que tu base de datos de recolección sea privada y persistente.
-*   **Filtrado de Falsos Nodos:** Excluye automáticamente la herbología en cadáveres (como los de Midnight) para evitar registrar coordenadas inválidas.
-*   **Limpieza de Duplicados:** Algoritmo integrado para detectar y eliminar automáticamente registros duplicados o muy cercanos.
-*   **Optimización de Rutas:** Algoritmo **Nearest Neighbor (Vecino Más Cercano)** que calcula la ruta de recolección óptima a partir de tu ubicación actual utilizando distancias físicas reales en yardas.
-*   **Brújula HUD Premium:** Una flecha flotante y dinámica que rota según la dirección a la que mira tu personaje y te muestra la distancia exacta al siguiente nodo.
-*   **Resaltado Inteligente en Mapas:** El pin objetivo de la ruta activa se dibuja el doble de grande y con un borde dorado brillante pulsante en el Minimapa y en el Mapa del Mundo.
+Additionally, it features a powerful intelligent navigation system that guides you through the optimal gathering route in your current zone.
 
 ---
 
-## Interacción con la Brújula HUD
+## Key Features
 
-*   **Mover el HUD:** Mantén presionado **Click Izquierdo** sobre la brújula y arrástrala a cualquier parte de tu pantalla. Su posición se guardará automáticamente para futuras sesiones.
-*   **Saltar Nodo:** Haz **Click Derecho** sobre la brújula para omitir el nodo actual y apuntar directamente al siguiente.
-*   **Avance Automático:** Al acercarte a menos de **30 yardas** de tu nodo objetivo actual, la brújula avanzará de manera automática al siguiente punto de la ruta.
-
----
-
-## Comandos de Chat
-
-Usa `/wig` o `/whereigathered` en el chat seguido de una opción:
-
-*   `/wig` (sin argumentos): Alterna la visibilidad de todos los iconos de recolección en los mapas.
-*   `/wig route`: Genera y activa la ruta de recolección para tu zona actual, mostrando la brújula en pantalla.
-*   `/wig route stop`: Detiene la ruta activa y oculta la brújula.
-*   `/wig route skip`: Salta el nodo actual de la ruta (equivalente al click derecho en la brújula).
-*   `/wig stats`: Muestra estadísticas detalladas sobre el número de nodos guardados en cada mapa.
-*   `/wig cleanup`: Elimina nodos duplicados o extremadamente cercanos de la base de datos para optimizar el rendimiento.
-*   `/wig reset`: Elimina los registros de recolección **solo del mapa/zona actual**.
-*   `/wig reset all`: Elimina **toda la base de datos** del addon.
-*   `/wig help`: Muestra una guía interactiva con la lista de comandos disponibles en el chat.
+*   **Automatic Recording:** Listens to your gathering spells cast in real-time and saves the exact coordinates.
+*   **Local Database:** Data is stored in your personal `SavedVariables`, ensuring that your gathering database remains private and persistent.
+*   **False Nodes Filtering:** Automatically excludes corpse-based herbalism (such as those in Midnight) to avoid registering invalid coordinates.
+*   **Duplicate Cleanup:** Built-in algorithm to automatically detect and remove duplicate or extremely close node records.
+*   **Route Optimization:** Uses the **Nearest Neighbor** algorithm to calculate the optimal gathering path starting from your current position, utilizing physical distance in yards.
+*   **Premium HUD Compass:** A floating, dynamic arrow that rotates based on the direction your character is facing and shows the exact distance to the next node.
+*   **Smart Map Highlights:** The target pin of the active route is drawn twice as large with a bright, glowing golden border on both the Minimap and the World Map.
 
 ---
 
-## Instalación
+## Compass HUD Interaction
 
-1.  Descarga o clona el repositorio.
-2.  Copia la carpeta en tu directorio de addons de World of Warcraft:
+*   **Move the HUD:** Hold **Left-Click** on the compass and drag it anywhere on your screen. Its position will be saved automatically for future sessions.
+*   **Skip Node:** **Right-Click** on the compass to skip the current node and immediately point to the next one.
+*   **Auto-Advance:** When you get within **30 yards** of your current target node, the compass will automatically advance to the next node in the route.
+
+---
+
+## Chat Commands
+
+Use `/wig` or `/whereigathered` in chat followed by an option:
+
+*   `/wig` (no arguments): Toggles the visibility of all gathering icons on the maps.
+*   `/wig route`: Generates and activates the gathering route for your current zone, showing the HUD compass on screen.
+*   `/wig route stop`: Stops the active route and hides the HUD compass.
+*   `/wig route skip`: Skips the current node in the route (equivalent to right-clicking the compass).
+*   `/wig stats`: Displays detailed statistics on the number of nodes saved in each map.
+*   `/wig cleanup`: Removes duplicate or extremely close nodes from the database to optimize performance.
+*   `/wig reset`: Deletes gathering records **only for the current map/zone**.
+*   `/wig reset all`: Deletes the **entire database** of the addon.
+*   `/wig help`: Displays an interactive guide with the list of available commands in chat.
+
+---
+
+## Installation
+
+1.  Download or clone the repository.
+2.  Copy the folder into your World of Warcraft addons directory:
     `World of Warcraft\_retail_\Interface\AddOns\WhereIGathered`
-3.  Asegúrate de que la carpeta de destino se llama exactamente `WhereIGathered`.
-4.  *Nota*: Si añades el addon por primera vez o tras esta actualización modular, es recomendable reiniciar el juego por completo (o ir a la pantalla de selección de personaje) para que el cliente de WoW registre los nuevos archivos descritos en el archivo `.toc`.
+3.  Ensure the destination folder is named exactly `WhereIGathered`.
+4.  *Note*: If you are adding the addon for the first time or after this modular update, it is recommended to completely restart the game (or log out to the character selection screen) so that the WoW client registers the new files listed in the `.toc` file.
 
 ---
 
-## Estructura Modular y Código
+## Modular Structure and Code
 
-El addon ha sido estructurado siguiendo los mejores estándares de desarrollo de WoW, dividido en los siguientes módulos cargados secuencialmente:
-*   `Init.lua`: Inicialización de espacios de nombres.
-*   `Utils.lua`: Wrappers seguros y compatibles para funciones de la API de WoW.
-*   `Core.lua`: Inicialización del addon, persistencia de datos y escucha de eventos principales.
-*   `Recorder.lua`: Registro y validación de recolección.
-*   `Routing.lua`: Heurísticas del algoritmo de vecino más cercano y estado de rutas.
-*   `Compass.lua`: Creación, animaciones y comportamiento del HUD de la brújula.
-*   `MapPins.lua`: Renderizado y resaltado de pines a través de la librería `HereBeDragons-Pins-2.0`.
-*   `SlashCommands.lua`: Procesamiento de comandos de consola.
+The addon has been structured following the best WoW development practices, split into the following sequentially loaded modules:
+*   `Init.lua`: Namespace initialization.
+*   `Utils.lua`: Safe and compatible wrappers for WoW API functions.
+*   `Core.lua`: Addon initialization, data persistence, and core event handling.
+*   `Recorder.lua`: Gathering detection and validation.
+*   `Routing.lua`: Nearest Neighbor algorithm heuristics and route state management.
+*   `Compass.lua`: Creation, rotation animations, and behavior of the HUD compass.
+*   `MapPins.lua`: Pin rendering and highlighting via the `HereBeDragons-Pins-2.0` library.
+*   `SlashCommands.lua`: Console command processing.
