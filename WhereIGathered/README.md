@@ -2,9 +2,8 @@
 
 **WhereIGathered** es un addon ligero y moderno para World of Warcraft (preparado para Midnight/TWW) que registra y dibuja automáticamente en el minimapa y en el mapa del mundo los nodos de minería y herboristería que recolectas con tu personaje, creando una base de datos local y personal.
 
-Además, cuenta con un potente sistema de navegación inteligente que te guía por la ruta óptima de recolección en tu zona actual.
+Además, cuenta con un sistema de navegación inteligente que te guía por la ruta óptima de recolección en tu zona actual.
 
----
 
 ## Características Principales
 
@@ -16,15 +15,11 @@ Además, cuenta con un potente sistema de navegación inteligente que te guía p
 *   **Brújula HUD Premium:** Una flecha flotante y dinámica que rota según la dirección a la que mira tu personaje y te muestra la distancia exacta al siguiente nodo.
 *   **Resaltado Inteligente en Mapas:** El pin objetivo de la ruta activa se dibuja el doble de grande y con un borde dorado brillante pulsante en el Minimapa y en el Mapa del Mundo.
 
----
-
 ## Interacción con la Brújula HUD
 
 *   **Mover el HUD:** Mantén presionado **Click Izquierdo** sobre la brújula y arrástrala a cualquier parte de tu pantalla. Su posición se guardará automáticamente para futuras sesiones.
 *   **Saltar Nodo:** Haz **Click Derecho** sobre la brújula para omitir el nodo actual y apuntar directamente al siguiente.
 *   **Avance Automático:** Al acercarte a menos de **30 yardas** de tu nodo objetivo actual, la brújula avanzará de manera automática al siguiente punto de la ruta.
-
----
 
 ## Comandos de Chat
 
@@ -40,8 +35,6 @@ Usa `/wig` o `/whereigathered` en el chat seguido de una opción:
 *   `/wig reset all`: Elimina **toda la base de datos** del addon.
 *   `/wig help`: Muestra una guía interactiva con la lista de comandos disponibles en el chat.
 
----
-
 ## Instalación
 
 1.  Descarga o clona el repositorio.
@@ -49,8 +42,6 @@ Usa `/wig` o `/whereigathered` en el chat seguido de una opción:
     `World of Warcraft\_retail_\Interface\AddOns\WhereIGathered`
 3.  Asegúrate de que la carpeta de destino se llama exactamente `WhereIGathered`.
 4.  *Nota*: Si añades el addon por primera vez o tras esta actualización modular, es recomendable reiniciar el juego por completo (o ir a la pantalla de selección de personaje) para que el cliente de WoW registre los nuevos archivos descritos en el archivo `.toc`.
-
----
 
 ## Estructura Modular y Código
 
@@ -63,3 +54,15 @@ El addon ha sido estructurado siguiendo los mejores estándares de desarrollo de
 *   `Compass.lua`: Creación, animaciones y comportamiento del HUD de la brújula.
 *   `MapPins.lua`: Renderizado y resaltado de pines a través de la librería `HereBeDragons-Pins-2.0`.
 *   `SlashCommands.lua`: Procesamiento de comandos de consola.
+
+## Screenshots
+### Wig commands
+<img width="429" height="163" alt="wig-commands" src="https://github.com/user-attachments/assets/63b9605f-bf09-4c09-a54e-b465997605b5" />
+
+### Wig route
+<img width="551" height="357" alt="wig route" src="https://github.com/user-attachments/assets/bf8f586b-7082-4a90-ae4b-20859305e320" />
+
+### Wig nodes
+<img width="390" height="315" alt="wig-nodes" src="https://github.com/user-attachments/assets/13f58dda-c1fd-439a-b8ba-b361250f3793" />
+
+
