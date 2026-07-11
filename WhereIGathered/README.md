@@ -2,8 +2,8 @@
 
 **WhereIGathered** is a lightweight, modern World of Warcraft addon (fully ready for Midnight/TWW) that automatically records and displays mining veins and herbalism nodes you gather with your character on both the minimap and the world map, building a personal, local database.
 
-Additionally, it features an intelligent navigation system that guides you through the optimal gathering route in your current zone.
-
+Additionally, it features an intelligent navigation system that guides you through the optimal gathering route in your current zone.  
+`CurseForge` link, [here](https://www.curseforge.com/wow/addons/whereigathered)
 
 ## Key Features
 
